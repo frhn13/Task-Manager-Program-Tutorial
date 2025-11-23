@@ -7,15 +7,15 @@ const createTask = (req, res) => {
 }
 
 const getTask = (req, res) => {
-    res.send("Create Task")
+    res.json({ id: req.params.id })
 }
 
 const updateTask = (req, res) => {
-    res.send("Create Task")
+    res.send("Update Task")
 }
 
 const deleteTask = (req, res) => {
-    res.send("Create Task")
+    res.send("Delete Task")
 }
 
 export {
