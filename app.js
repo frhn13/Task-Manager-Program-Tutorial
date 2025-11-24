@@ -5,6 +5,7 @@ import tasks from "./routes/tasks.js"
 import dotenv from "dotenv"
 dotenv.config() // Import needed to access .env file
 import notFound from "./middleware/not-found.js"
+import errorHandlerMiddleware from "./middleware/error-handler.js"
 
 // Middleware
 app.use(express.static("./public"))
@@ -17,8 +18,8 @@ app.get("/hello", (req, res) => {
 })
   
 app.use("/api/v1/tasks", tasks)
-
 app.use(notFound) // Middleware is called when URL is invalid
+app.use(errorHandlerMiddleware)
 
 const port = 3000
 
