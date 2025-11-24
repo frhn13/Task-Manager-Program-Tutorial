@@ -4,8 +4,10 @@ const app = express()
 import tasks from "./routes/tasks.js"
 import dotenv from "dotenv"
 dotenv.config() // Import needed to access .env file
+import notFound from "./middleware/not-found.js"
 
 // Middleware
+app.use(express.static("./public"))
 // parse json
 app.use(express.json()) 
 
@@ -15,6 +17,8 @@ app.get("/hello", (req, res) => {
 })
   
 app.use("/api/v1/tasks", tasks)
+
+app.use(notFound) // Middleware is called when URL is invalid
 
 const port = 3000
 
